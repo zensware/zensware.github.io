@@ -3,141 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zensware</title>
+    <title>zensware.com</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: #fff;
-            line-height: 1.6;
-        }
-
-        /* Navigation bar styles */
-        .navbar {
-            background-color: #000;
-            padding: 10px 20px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar-brand {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .navbar-brand:hover {
-            color: #ccc;
-        }
-
-        .navbar-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-menu a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-
-        .navbar-menu a:hover {
-            color: #ccc;
-        }
-
-        .navbar-icons i {
-            color: #fff;
-            font-size: 20px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .navbar-icons i:hover {
-            color: #ccc;
-        }
-
-        /* Main container styles */
-        .container {
-            padding: 40px;
-            background-color: #333;
-            border-radius: 20px;
-            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
-            margin: 20px;
-            text-align: center;
-        }
-
-        .container h1 {
-            margin-bottom: 20px;
-            color: #fff;
-            font-size: 48px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .container h1::after {
-            content: " ";
-            position: absolute;
-            right: 0;
-            top: 0;
-            color: #00f;
-            animation: typing 1s steps(20, end) infinite;
-        }
-
-        @keyframes typing {
-            0% { width: 0 }
-            50% { width: 100% }
-            100% { width: 100% }
-        }
-
-        .container p {
-            margin-bottom: 20px;
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        /* About section styles */
-        .about {
-            padding: 40px;
-            background-color: #444;
-            border-radius: 20px;
-            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
-            margin: 20px;
-            text-align: left;
-        }
-
-        .about h2 {
-            color: #fff;
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .about p {
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        /* Footer styles */
-        footer {
-            background-color: #000;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -145,45 +13,36 @@
     <a href="#" class="navbar-brand">zensware.com</a>
     <div class="navbar-menu">
         <a href="./pages/information.html">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="./pages/projects.html">Products</a>
+        <a href="./pages/contact.html">Contact</a>
     </div>
     <div class="navbar-icons">
-        <a href="https://github.com/zensware" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://discord.gg/stWgVnBgHq" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://github.com/zensware" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://discord.gg/stWgVnBgHq" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
     </div>
 </nav>
 
-<div class="container">
-    <h1>Welcome to <span id="typing"></span></h1>
-    <p>I'm currently developing the site... This may take a good while to get fully set up.</p>
-</div>
+<header class="hero">
+    <div class="hero-text">
+        <h1>Best Premium Software On Discord</h1>
+        <p>We offer reliable and high-quality software solutions at no cost.</p>
+        <a href="./pages/products.html" class="cta-button">Get Our Products Now</a>
 
-<div class="about">
-    <h2>About Me</h2>
-    <p>I'm zens, a software developer dedicated to creating creative discord plugins.</p>
-    <p>With a focus on user experience and functionality, I strive to deliver high-quality software products.</p>
-    <p>Explore my website to learn more about my projects and interests.</p>
-</div>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="images/logo.png" alt="Zensware Logo">
+    </div>
+</header>
 
-<footer>&copy; 2024 zensware. All rights reserved.</footer>
+<section class="about" id="about">
+    <h2>Website Status</h2>
+    <p>Our website is currently underdevelopment. The developmental stage hopefully doesn't take to long</p>
+    <p>Our focus is set on the users experience and functionality, I strive to deliver high-quality software.</p>
+    <p>Bare with us whilst our website is being developed. We hope to see you soon!</p>
+</section>
 
-<script>
-    // Typing animation for "Zensware"
-    const typingText = document.getElementById('typing');
-    let textIndex = 0;
-    const text = "zensware";
-
-    function type() {
-        if (textIndex < text.length) {
-            typingText.textContent += text.charAt(textIndex);
-            textIndex++;
-            setTimeout(type, 100);
-        }
-    }
-
-    type();
-</script>
+<footer>&copy; 2024 Zensware. All rights reserved.</footer>
 
 </body>
 </html>
