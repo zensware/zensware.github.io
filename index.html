@@ -4,45 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>zensware.com</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">zensware.com</div>
+            <ul class="nav-links">
+                <li><a href="./pages/About.html">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-<nav class="navbar">
-    <a href="#" class="navbar-brand">zensware.com</a>
-    <div class="navbar-menu">
-        <a href="./pages/information.html">About</a>
-        <a href="./pages/projects.html">Products</a>
-        <a href="./pages/contact.html">Contact</a>
-    </div>
-    <div class="navbar-icons">
-        <a href="https://github.com/zensware" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://discord.gg/stWgVnBgHq" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-    </div>
-</nav>
+    <main>
+        <section class="intro">
+            <div class="text-content">
+                <h1>Hi, I'm a zens! 👋</h1>
+                <p>An amateur Developer that mainly works within Discord... I'm trying to expand my projects in the future to reach a broader audience.</p>
+                <a href="#projects" class="button">View Recent Works</a>
+            </div>
+        </section>
+    </main>
 
-<header class="hero">
-    <div class="hero-text">
-        <h1>Best Premium Software On Discord</h1>
-        <p>We offer reliable and high-quality software solutions at no cost.</p>
-        <a href="./pages/products.html" class="cta-button">Get Our Products Now</a>
+    <footer>
+        <p>© 2024 Zensware</p>
+    </footer>
 
-        </div>
-    </div>
-    <div class="hero-image">
-        <img src="images/logo.png" alt="Zensware Logo">
-    </div>
-</header>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
 
-<section class="about" id="about">
-    <h2>Website Status</h2>
-    <p>Our website is currently underdevelopment. The developmental stage hopefully doesn't take to long</p>
-    <p>Our focus is set on the users experience and functionality, I strive to deliver high-quality software.</p>
-    <p>Bare with us whilst our website is being developed. We hope to see you soon!</p>
-</section>
-
-<footer>&copy; 2024 Zensware. All rights reserved.</footer>
-
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
