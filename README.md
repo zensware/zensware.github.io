@@ -1,4 +1,4 @@
-Welcome to the **zensware.com** interactive console project! This web-based console simulates a terminal-like interface, providing users with an engaging and dynamic way to explore Zensware's portfolio, skills, projects, and more. The console is designed with modern aesthetics and functionality in mind, delivering a unique experience for visitors.
+Welcome to the **zensware.com** interactive console project! This web-based console simulates a terminal-like interface, providing users with an engaging and dynamic way to explore Zensware's portfolio, skills, projects, and more. The console is designed with modern aesthetics and functionality in mind, delivering a unique experience for visitors. Oh yeah made the readme with chatgpt cause I got lazy lol... mb i'll update it soon
 
 ## Features
 
