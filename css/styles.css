@@ -1,246 +1,113 @@
-/* About Me Page Styles */
-.about-me {
-    padding: 100px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.about-me h1.glow-text {
-    font-size: 3em;
-    color: #ff6f61;
-    text-shadow: 0 0 20px rgba(255, 111, 97, 0.7);
-    margin-bottom: 50px;
-}
-
-.info-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 100%;
-    align-items: center;
-}
-
-.info-box {
-    background-color: #2c2c2c;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255, 111, 97, 0.5);
-    padding: 40px;
-    width: 100%;
-    max-width: 800px;
-    text-align: left;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.info-box:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 30px rgba(255, 111, 97, 0.7);
-}
-
-.info-box h2 {
-    color: #ff6f61;
-    margin-bottom: 15px;
-}
-
-.info-box p {
-    color: #ddd;
-    margin: 0;
-}
-
-/* General Styles */
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    overflow-x: hidden;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
     padding: 0;
-    margin: 0;
-}
-
-header nav {
-    background-color: #1f1f1f;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: #e0e0e0;
+    font-family: 'Fira Code', Consolas, 'Courier New', monospace;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 50px;
-}
-
-.logo {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #ff6f61;
-    text-shadow: 0 0 10px rgba(255, 111, 97, 0.7);
-    position: absolute;
-    left: 20px;
-}
-
-.logo a {
-    color: #ff6f61;
-    text-decoration: none;
-    text-shadow: 0 0 10px rgba(255, 111, 97, 0.7);
-}
-
-.logo a:visited,
-.logo a:active,
-.logo a:hover {
-    color: #ff6f61;
-    text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-links li a {
-    color: #ffffff;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.nav-links li a:hover {
-    color: #ff6f61;
-}
-
-.nav-links li a:visited,
-.nav-links li a:active {
-    color: #ffffff;
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-}
-
-.menu-toggle span {
-    height: 3px;
-    width: 25px;
-    background-color: #fff;
-    margin: 4px;
-    transition: 0.3s;
-}
-
-.intro {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 0 20px;
+    overflow: hidden;
+}
+
+.console-wrapper {
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.console-header {
+    background-color: #20232a;
+    color: #61dafb;
+    padding: 10px;
     text-align: center;
-    background: radial-gradient(circle at center, #2c2c2c, #1c1c1c);
-    background-size: cover;
-    animation: fadeIn 1s ease-in-out;
-}
-
-.intro .text-content {
-    max-width: 700px;
-    animation: slideIn 1s ease-in-out;
-}
-
-.intro h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.intro p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
-
-.button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #ff6f61;
-    color: #ffffff;
+    font-size: 16px;
     font-weight: bold;
-    border-radius: 25px;
-    transition: background-color 0.3s;
+    border-bottom: 1px solid #282c34;
 }
 
-.button:hover {
-    background-color: #ff8b7f;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #1f1f1f;
+.console {
+    background-color: #1e1e1e;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
     position: relative;
+    overflow: hidden;
+    color: #00c0c0;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.console-output {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    color: #00c0c0;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-right: 10px;
 }
 
-@keyframes slideIn {
-    from { transform: translateY(50px); }
-    to { transform: translateY(0); }
+.console-input {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #282c34;
+    padding-top: 5px;
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-    header nav {
-        flex-direction: column;
-        padding: 10px 20px;
+#console-prompt {
+    margin-right: 5px;
+    color: #00c0c0;
+    font-weight: bold;
+}
+
+#input-field {
+    background-color: transparent;
+    border: none;
+    color: #00c0c0;
+    font-size: 14px;
+    width: 100%;
+    outline: none;
+}
+
+.cursor-blink {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        border-color: transparent;
     }
+    50% {
+        border-color: #00c0c0;
+    }
+}
 
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 20px;
-        background-color: #1f1f1f;
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00c0c0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00c0c0;
+}
+
+@media (max-width: 600px) {
+    .console-wrapper {
         width: 100%;
-        position: absolute;
-        top: 70px;
-        left: 0;
+        height: 70vh;
     }
 
-    .nav-links.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .logo {
-        margin-bottom: 10px;
-    }
-
-    .about-me {
-        padding: 50px 20px;
-    }
-
-    .info-container {
-        flex-direction: column;
-    }
-
-    .info-box {
-        max-width: 100%;
+    #console-prompt, #input-field {
+        font-size: 12px;
     }
 }
