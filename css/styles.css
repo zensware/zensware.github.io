@@ -102,3 +102,22 @@ body {
     color: #aaaaaa;
     font-size: 0.9rem;
 }
+.contact-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #00c8ff, #00ff85);
+    border: none;
+    color: #121212;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Removes default link underline */
+    text-align: center;
+    font-weight: bold;
+}
+
+.contact-btn:hover {
+    opacity: 0.9;
+}
