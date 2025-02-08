@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zensware.com | Guide for IMDb ID's</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .return-btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .return-btn {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00c8ff, #00ff85);
+            border: none;
+            color: #121212;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .return-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main class="content">
+            <h2>How to Find IMDb IDs for Movies</h2>
+            <p>Follow these simple steps to retrieve an IMDb ID and stream movies using WatchHaven.</p>
+            
+            <div class="services">
+                <div class="service">
+                    <h3>Step 1: Visit IMDb</h3>
+                    <p>Go to <a href="https://www.imdb.com" target="_blank">IMDb.com</a>. Use the search bar at the top of the page.</p>
+                </div>
+
+                <div class="service">
+                    <h3>Step 2: Search for a Movie</h3>
+                    <p>Type in the movie name (e.g., <strong>Fight Club</strong>) and select the correct title from the results.</p>
+                </div>
+
+                <div class="service">
+                    <h3>Step 3: Go on the Movies Page</h3>
+                    <p>Click the movie title to open its page. The URL will look something like:</p>
+                    <code>https://www.imdb.com/title/tt0137523/</code>
+                </div>
+
+                <div class="service">
+                    <h3>Step 4: Find the IMDb ID</h3>
+                    <p>The IMDb ID is the unique identifier in the URL. In the example above, it's:</p>
+                    <code>tt0137523</code>
+                </div>
+
+                <div class="service">
+                    <h3>Step 5: Use the IMDb ID on WatchHaven</h3>
+                    <p>To watch the movie, add the IMDb ID to zensware.com's player URL:</p>
+                    <code>https://zensware.com/pages/streaming-service/discord-watch.html?id=tt0137523</code>
+                </div>
+            </div>
+
+            <div class="return-btn-container">
+                <a href="../streaming-service/watch.html" class="return-btn">Return to Watch Page</a>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>
