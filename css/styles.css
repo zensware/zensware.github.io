@@ -113,7 +113,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-decoration: none; /* Removes default link underline */
+    text-decoration: none;
     text-align: center;
     font-weight: bold;
 }
