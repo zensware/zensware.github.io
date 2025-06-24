@@ -3,169 +3,808 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="shortcut icon" href="https://media.discordapp.net/attachments/1200751717873098843/1278365587894046803/images_11.png?ex=685b637b&is=685a11fb&hm=84d08c30f55b29eee281890c553fc3d4048a2090bd9fc748252d2dbc210a4595&=&format=webp&quality=lossless&width=174&height=130">
   <title>zensware.com</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #7c4dff;
+      --primary-light: #a974ff;
+      --secondary: #bb86fc;
+      --dark: #0b0b0f;
+      --darker: #06060a;
+      --card-bg: rgba(30, 23, 44, 0.7);
+      --glass: rgba(22, 19, 31, 0.5);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text: #e3dcff;
+      --text-light: #c0b3e6;
+      --success: #4caf50;
+      --transition: all 0.3s ease;
+      --border-radius: 18px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      --blur: blur(12px);
+      --safe-top: env(safe-area-inset-top, 0);
+      --safe-bottom: env(safe-area-inset-bottom, 0);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      text-decoration: none !important; /* Remove all underlines */
     }
 
     body {
-      background-color: #0b0b0f;
-      color: #e3dcff;
+      background: linear-gradient(135deg, var(--darker) 0%, #1c1528 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: var(--safe-top) 0 var(--safe-bottom) 0;
+      background-attachment: fixed;
+      background-size: cover;
+      overflow-x: hidden;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    /* iOS-specific styles */
+    @supports (-webkit-touch-callout: none) {
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      button, input, textarea {
+        -webkit-appearance: none;
+        border-radius: var(--border-radius);
+      }
     }
 
+    /* Glassmorphism container */
+    .glass {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header styling */
     header {
-      background-color: #16131f;
-      padding: 1.5rem 2rem;
+      padding: 1.2rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #2e2b3a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      background: rgba(11, 11, 15, 0.7);
+      border-bottom: 1px solid rgba(46, 43, 58, 0.5);
     }
 
-    header h1 {
-      font-size: 1.75rem;
-      color: #bb86fc;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--secondary);
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
     }
 
     nav a {
-      margin-left: 1.5rem;
-      font-weight: 600;
-      color: #cfc4ff;
-      transition: color 0.3s;
+      color: var(--text-light);
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    /* Remove underline effect */
+    nav a::after {
+      display: none;
     }
 
     nav a:hover {
-      color: #bb86fc;
+      color: var(--secondary);
     }
 
+    /* Hero section */
     .hero {
-      padding: 6rem 2rem 4rem 2rem;
+      padding: 6rem 1.5rem 4rem;
       text-align: center;
-      background: linear-gradient(135deg, #1c1528 0%, #10091a 100%);
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero h2 {
-      font-size: 3rem;
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-container {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .profile-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      box-shadow: 0 10px 30px rgba(124, 77, 255, 0.3);
+    }
+
+    .status-badge {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background: var(--success);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--darker);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
       margin-bottom: 1rem;
-      color: #ffffff;
+      background: linear-gradient(to right, var(--text) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
     }
 
     .hero p {
-      font-size: 1.25rem;
-      max-width: 650px;
-      margin: 0 auto 2rem auto;
-      color: #c0b3e6;
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto 2rem;
     }
 
-    .download-btn {
-      background-color: #7c4dff;
-      color: #fff;
+    .hero .highlight {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
       padding: 0.9rem 2.2rem;
       font-size: 1rem;
-      border: none;
-      border-radius: 10px;
+      font-weight: 600;
+      border-radius: var(--border-radius);
       cursor: pointer;
-      transition: background-color 0.25s;
-      box-shadow: 0 4px 20px rgba(124, 77, 255, 0.3);
+      transition: var(--transition);
+      text-align: center;
+      border: none;
     }
 
-    .download-btn:hover {
-      background-color: #a974ff;
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 20px rgba(124, 77, 255, 0.4);
     }
 
-    .features {
-      padding: 5rem 2rem;
-      background-color: #140f1e;
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 25px rgba(124, 77, 255, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-light);
+      border: 1px solid var(--glass-border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-3px);
+    }
+
+    /* Skills section */
+    .skills {
+      padding: 5rem 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
       display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
 
-    .feature-card {
-      background-color: #1e172c;
+    .skill-card {
       padding: 2rem;
-      border-radius: 15px;
-      color: #e3dcff;
-      border: 1px solid #30294a;
-      transition: transform 0.3s;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      text-align: center;
     }
 
-    .feature-card:hover {
+    .skill-card:hover {
       transform: translateY(-5px);
     }
 
-    .feature-card h3 {
+    .skill-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(123, 77, 255, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .skill-card h3 {
       margin-bottom: 1rem;
-      color: #bb86fc;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
+      color: var(--text);
     }
 
-    .feature-card p {
-      color: #c2b6e2;
+    .skill-card p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
     }
 
-    footer {
+    /* Portfolio section */
+    .portfolio {
+      padding: 5rem 1.5rem;
+      background: rgba(11, 11, 15, 0.4);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .portfolio-item {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      position: relative;
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+    }
+
+    .portfolio-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .portfolio-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-tag {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+      align-self: flex-start;
+    }
+
+    .portfolio-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .portfolio-description {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .portfolio-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .portfolio-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .portfolio-link:hover {
+      color: var(--primary-light);
+      gap: 0.7rem;
+    }
+
+    /* About section */
+    .about {
+      padding: 5rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .about-text {
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+    }
+
+    .about-highlight {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    /* Contact section */
+    .contact {
+      padding: 5rem 1.5rem;
+      background: linear-gradient(135deg, #1c1528 0%, #10091a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(123, 77, 255, 0.1) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
       text-align: center;
-      padding: 3rem 1rem;
-      background-color: #16131f;
-      color: #a199c7;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .contact p {
+      color: var(--text-light);
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      color: var(--secondary);
+    }
+
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .social-link:hover .social-icon {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 1.5rem 2rem;
+      background-color: var(--darker);
+      border-top: 1px solid rgba(46, 43, 58, 0.5);
+      text-align: center;
+    }
+
+    .copyright {
+      color: var(--text-light);
       font-size: 0.9rem;
-      border-top: 1px solid #2e2b3a;
+    }
+
+    /* iOS Home Screen Prompt */
+    .ios-prompt {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius);
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 1000;
+      max-width: 320px;
+      transform: translateY(100px);
+      animation: slideUp 0.5s forwards 1s;
+      box-shadow: var(--shadow);
+    }
+
+    .ios-prompt i {
+      font-size: 24px;
+      color: var(--primary);
+    }
+
+    .ios-prompt p {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .ios-prompt button {
+      background: transparent;
+      border: none;
+      color: var(--primary-light);
+      font-size: 24px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .ios-prompt button:hover {
+      color: var(--secondary);
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 4rem 1.5rem 3rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      .profile-image {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>zensware.com</h1>
+  <!-- iOS Home Screen Prompt -->
+  <div class="ios-prompt glass">
+    <i class="fas fa-plus-circle"></i>
+    <p>Add to Home Screen for full experience</p>
+    <button id="close-prompt">&times;</button>
+  </div>
+
+  <header class="glass">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <img src="https://media.discordapp.net/attachments/1200751717873098843/1278365587894046803/images_11.png?ex=685b637b&is=685a11fb&hm=84d08c30f55b29eee281890c553fc3d4048a2090bd9fc748252d2dbc210a4595&=&format=webp&quality=lossless&width=174&height=130" alt="zensware logo" class="logo-image">
+      </div>
+      <span>zensware.com</span>
+    </a>
     <nav>
-      <a href="#features">Features</a>
-      <a href="#download">Download</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>External Color-Bot for Valorant</h2>
-    <p>Take your gameplay to the next level with a fast, reliable, and customizable pixel detection bot built for Valorant.</p>
-    <a href="https://s3.filebin.net/filebin/2a267c4a3ff249aeafaaf97f4ee884968db758662edca4df02de399a3bb44326/4c986dc3e587471e80b2702c3debabbba0bff5972200e8520950cdf08410869d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=7pMj6hGeoKewqmMQILjm%2F20250623%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250623T173659Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&response-cache-control=max-age%3D60&response-content-disposition=inline%3B%20filename%3D%22Color-Bot.7z%22&response-content-type=application%2Fx-7z-compressed&X-Amz-Signature=9f15f8baa2f10dbbf3d14cc0ab5649da2f8d17cdd88af5fc26708a9ecaaf4f6f" target="_blank">
-      <button class="download-btn">Download Now</button>
-    </a>
-  </section>
-
-  <section class="features" id="features">
-    <div class="feature-card">
-      <h3>Precision Detection</h3>
-      <p>Ultra-fast pixel scanning detects target colors with pinpoint accuracy, ideal for clutch plays and flick shots.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Custom Configs</h3>
-      <p>Fine-tune sensitivity, color ranges, and toggle settings using simple JSON configuration files.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Live Status OSD</h3>
-      <p>A lightweight overlay keeps you informed with real-time bot status and toggles without distraction.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Safe & Efficient</h3>
-      <p>Runs in the background without impacting performance, with keybind control for total command.</p>
+    <div class="hero-content">
+      <div class="profile-container">
+        <img src="https://media.discordapp.net/attachments/1379111968069128302/1387072955866943592/f655b9b3-d01f-4454-b81f-0e9db46ab095.png?ex=685c03db&is=685ab25b&hm=1f813797e0248a3d553b7d690c9f6d5a7f8cb25d4d2d35067490367e53e5db6c&=&format=webp&quality=lossless&width=448&height=671" alt="Profile" class="profile-image">
+        <div class="status-badge">
+          <i class="fas fa-check"></i>
+        </div>
+      </div>
+      <h1>Hi, I'm zensware</h1>
+      <p>I love to create <span class="highlight">applications</span> for gamers and developers. My focus is creating efficient & light-weight programs that satisfies the users needs!</p>
+      <div class="cta-buttons">
+        <a href="#portfolio" class="btn btn-primary">View My Projects</a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
     </div>
   </section>
 
-  <footer id="contact">
-    <p>&copy; Undected Color-Bot created by zensware. Hosted with GitHub Pages.</p>
+  <section class="skills" id="skills">
+    <div class="section-header">
+      <h2>My Expertise</h2>
+      <p>I specialize in only a few subjects</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card glass">
+        <div class="skill-icon">
+          <i class="fab fa-discord"></i>
+        </div>
+        <h3>Discord Development</h3>
+        <p>Building bots and integrations for Discord communities</p>
+      </div>
+      
+      <div class="skill-card glass">
+        <div class="skill-icon">
+          <i class="fas fa-globe"></i>
+        </div>
+        <h3>Web Development</h3>
+        <p>Creating minimalistic websites and web applications</p>
+      </div>
+      
+      <div class="skill-card glass">
+        <div class="skill-icon">
+          <i class="fab fa-python"></i>
+        </div>
+        <h3>Python</h3>
+        <p>Making applications with Python for Automation</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio" id="portfolio">
+    <div class="section-header">
+      <h2>My Projects</h2>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item glass">
+        <img src="https://media.discordapp.net/attachments/1379111968069128302/1386785033796325486/FAEA1CD6-221D-4F56-B355-6908612D0F52.png?ex=685ba075&is=685a4ef5&hm=53d0a5a24fd29b3919498ecfab15905457291bb8e685ee80dec05e5449326d97&=&format=webp&quality=lossless&width=393&height=151" alt="Webhook Spammer" class="portfolio-image">
+        <div class="portfolio-content">
+          <span class="portfolio-tag">Discord Tool</span>
+          <h3 class="portfolio-title">Webhook Spammer</h3>
+          <p class="portfolio-description">A powerful tool for webhooks by sending multiple requests. Useful for raiding servers.</p>
+          <div class="portfolio-links">
+            <a href="https://zensware.com/Webhook-IOS-App/" class="portfolio-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Visit Project
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portfolio-item glass">
+        <img src="https://media.discordapp.net/attachments/1379111968069128302/1387063636228440254/Untitled2.jpg?ex=685bfb2d&is=685aa9ad&hm=d7365b3efda6fd50446299baa5f4493f6a553ede66fe98b2b511a2df420d9ccf&=&format=webp&width=1286&height=724" alt="Valorant Color-Bot" class="portfolio-image">
+        <div class="portfolio-content">
+          <span class="portfolio-tag">External Cheat</span>
+          <h3 class="portfolio-title">Valorant Color-Bot</h3>
+          <p class="portfolio-description">Advanced Enemy detection for a competitive advantage. Ultra-fast scanning with customizable settings for optimal performance.</p>
+          <div class="portfolio-links">
+            <a href="./pages/colorbot.html" class="portfolio-link">
+              <i class="fas fa-download"></i> Download
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="section-header">
+      <h2>About Me</h2>
+    </div>
+    <div class="about-content glass" style="padding: 2.5rem; border-radius: var(--border-radius);">
+      <div class="about-text">
+        <p>I'm a 18 year old developer who focuses on creating practical and programs that solve my specific needs. I started 4 years ago when I needed simple things for my own needs and started developing applications with help from Youtube, and I realized others might benefit from what I make too.</p>
+        
+        <p>My main focus when it comes to developing is building <span class="about-highlight">lean, functional applications</span> without unnecessary complexity. Whether it's a exploits or day to day applications, I prioritize performance and usability.</p>
+        
+        <p>My development follows this ideology: <span class="about-highlight">Create something with efficient code</span>. I believe in creating apps that just work, without bloat or unnecessary features.</p>
+        
+        <p>When I'm not coding, I'm usually either attending school or working out at the gym. I've as of recently started detaching myself from my pc...</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-content glass" style="padding: 3rem; border-radius: var(--border-radius);">
+      <h2>Get In Touch</h2>
+      <p>Have questions about my what I make? Reach out through my socials</p>
+      
+      <div class="social-links">
+        <a href="https://discord.gg/stWgVnBgHq" class="social-link" target="_blank">
+          <div class="social-icon">
+            <i class="fab fa-discord"></i>
+          </div>
+          <span>Discord</span>
+        </a>
+        
+        <a href="https://t.me/zensware" class="social-link" target="_blank">
+          <div class="social-icon">
+            <i class="fab fa-telegram"></i>
+          </div>
+          <span>Telegram</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="copyright">
+      <p>&copy; 2023 zensware. All projects created with passion.</p>
+    </div>
   </footer>
+
+  <script>
+    // Close iOS prompt
+    document.getElementById('close-prompt').addEventListener('click', function() {
+      document.querySelector('.ios-prompt').style.display = 'none';
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Only show iOS prompt on iOS devices
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (!isIOS) {
+      document.querySelector('.ios-prompt').style.display = 'none';
+    }
+    
+    // Check if app is already installed
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      document.querySelector('.ios-prompt').style.display = 'none';
+    });
+  </script>
 </body>
 
 </html>
