@@ -1,810 +1,474 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="shortcut icon" href="https://media.discordapp.net/attachments/1200751717873098843/1278365587894046803/images_11.png?ex=685b637b&is=685a11fb&hm=84d08c30f55b29eee281890c553fc3d4048a2090bd9fc748252d2dbc210a4595&=&format=webp&quality=lossless&width=174&height=130">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>zensware.com</title>
-  <link rel="manifest" href="/manifest.json">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="The best free undetected Valorant External cheat." />
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png">
+  <meta property="og:title" content="zensware.com" />
+  <meta property="og:description" content="The best free undetected Valorant External cheat." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png" />
+  <meta name="twitter:card" content="summary" />
   <style>
-    :root {
-      --primary: #7c4dff;
-      --primary-light: #a974ff;
-      --secondary: #bb86fc;
-      --dark: #0b0b0f;
-      --darker: #06060a;
-      --card-bg: rgba(30, 23, 44, 0.7);
-      --glass: rgba(22, 19, 31, 0.5);
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --text: #e3dcff;
-      --text-light: #c0b3e6;
-      --success: #4caf50;
-      --transition: all 0.3s ease;
-      --border-radius: 18px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      --blur: blur(12px);
-      --safe-top: env(safe-area-inset-top, 0);
-      --safe-bottom: env(safe-area-inset-bottom, 0);
+    :root{
+      --primary:#7c4dff;--primary-600:#a974ff;--primary-700:#915eff;
+      --bg-950:#06060a;--bg-900:#0b0b0f;--bg-800:#1c1528;
+      --glass:rgba(22,19,31,.5);--glass-border:rgba(255,255,255,.08);
+      --text-100:#f4f2ff;--text-300:#e3dcff;--text-500:#c0b3e6;--ok:#4caf50;
+      --radius:18px;--shadow:0 10px 30px rgba(0,0,0,.35);--blur:12px;
+      --gap:1rem;--transition:transform .25s ease,opacity .25s ease,background-color .25s ease,color .25s ease,border-color .25s ease;
+      --header-h:64px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;background:linear-gradient(135deg,var(--bg-950),var(--bg-800));color:var(--text-300);-webkit-font-smoothing:antialiased;moz-osx-font-smoothing:grayscale}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+    .glass{background:var(--glass);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid var(--glass-border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.5rem .75rem;border-radius:.5rem;background:#111;color:#fff;z-index:999}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,11,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(46,43,58,.4)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;min-height:var(--header-h)}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;font-size:1.25rem;color:var(--text-100)}
+    .brand .logo{width:40px;height:40px;border-radius:10px;overflow:hidden;display:grid;place-items:center}
+    .brand img{width:100%;height:100%;object-fit:cover}
+    .links{display:flex;gap:1.25rem;align-items:center}
+    .links a{color:var(--text-500);font-weight:600;letter-spacing:.2px;position:relative}
+    .links a:focus-visible,.links a:hover{color:var(--primary-600)}
+
+    .menu-btn{display:none;appearance:none;border:1px solid var(--glass-border);background:transparent;color:var(--text-300);border-radius:12px;padding:.5rem .6rem;cursor:pointer}
+    .menu-btn svg{display:block}
+
+    /* Mobile menu */
+    @media (max-width: 820px){
+      .menu-btn{display:inline-flex}
+      .links{display:none}
+      .links.open{display:flex;position:absolute;left:1rem;right:1rem;top:64px;padding:1rem;background:rgba(11,11,15,.92);border:1px solid var(--glass-border);border-radius:14px;flex-direction:column}
+      .links a{padding:.5rem}
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      text-decoration: none !important; /* Remove all underlines */
-    }
+    /* Hero (full-screen “download” page) */
+    .hero{position:relative;min-height:calc(100svh - var(--header-h));text-align:center;overflow:clip;display:flex;align-items:center}
+    .hero .container{min-height:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 0}
+    .glow{position:absolute;inset:auto;pointer-events:none;z-index:-1;filter:blur(90px);opacity:.35}
+    .glow.one{width:260px;height:260px;background:radial-gradient(circle,var(--primary) 0%,transparent 70%);left:6%;top:8%}
+    .glow.two{width:280px;height:280px;background:radial-gradient(circle,var(--primary-600) 0%,transparent 70%);right:8%;bottom:12%}
+    .hero h1{font-size:min(9vw,3.25rem);line-height:1.15;margin:.25rem 0 .75rem;background:linear-gradient(90deg,var(--text-100),var(--primary-600));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+    .hero p{max-width:760px;margin:0 auto 1.25rem;color:var(--text-500);font-size:1.05rem}
+    .actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.35rem;border-radius:14px;border:1px solid var(--glass-border);background:rgba(255,255,255,.04);font-weight:700;letter-spacing:.2px;transition:var(--transition)}
+    .btn svg{width:18px;height:18px}
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 24px rgba(124,77,255,.4)}
+    .btn-primary:hover{transform:translateY(-2px);background:var(--primary-700)}
+    .btn-ghost:hover{background:rgba(255,255,255,.06)}
+    .scroll-cue{margin-top:2rem;opacity:.7;font-size:.9rem}
+    .scroll-cue a{display:inline-flex;gap:.5rem;align-items:center;color:var(--text-500)}
+    .scroll-cue svg{width:16px;height:16px}
 
-    body {
-      background: linear-gradient(135deg, var(--darker) 0%, #1c1528 100%);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      padding: var(--safe-top) 0 var(--safe-bottom) 0;
-      background-attachment: fixed;
-      background-size: cover;
-      overflow-x: hidden;
-    }
+    /* Sections */
+    section{scroll-margin-top:90px}
+    .section-head{text-align:center;margin:2rem 0 1rem}
+    .section-head h2{font-size:2rem;color:var(--text-100);margin:0 0 .4rem}
+    .section-head p{color:var(--text-500);max-width:640px;margin:0 auto}
 
-    /* iOS-specific styles */
-    @supports (-webkit-touch-callout: none) {
-      body {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      
-      button, input, textarea {
-        -webkit-appearance: none;
-        border-radius: var(--border-radius);
-      }
-    }
-
-    /* Glassmorphism container */
-    .glass {
-      background: var(--glass);
-      backdrop-filter: var(--blur);
-      -webkit-backdrop-filter: var(--blur);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-    }
-
-    /* Header styling */
-    header {
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: var(--blur);
-      -webkit-backdrop-filter: var(--blur);
-      background: rgba(11, 11, 15, 0.7);
-      border-bottom: 1px solid rgba(46, 43, 58, 0.5);
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: var(--secondary);
-    }
-
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .logo-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      color: var(--text-light);
-      font-weight: 500;
-      padding: 0.5rem 0;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    /* Remove underline effect */
-    nav a::after {
-      display: none;
-    }
-
-    nav a:hover {
-      color: var(--secondary);
-    }
-
-    /* Hero section */
-    .hero {
-      padding: 6rem 1.5rem 4rem;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .profile-container {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-
-    .profile-image {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--primary);
-      box-shadow: 0 10px 30px rgba(124, 77, 255, 0.3);
-    }
-
-    .status-badge {
-      position: absolute;
-      bottom: 15px;
-      right: 15px;
-      background: var(--success);
-      color: white;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--darker);
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      background: linear-gradient(to right, var(--text) 0%, var(--secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--text-light);
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    .hero .highlight {
-      color: var(--secondary);
-      font-weight: 600;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 4px 20px rgba(124, 77, 255, 0.4);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-light);
-      transform: translateY(-3px);
-      box-shadow: 0 7px 25px rgba(124, 77, 255, 0.5);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-light);
-      border: 1px solid var(--glass-border);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-3px);
-    }
-
-    /* Skills section */
-    .skills {
-      padding: 5rem 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-header h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--secondary);
-    }
-
-    .section-header p {
-      color: var(--text-light);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .skill-card {
-      padding: 2rem;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--border-radius);
-      text-align: center;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .skill-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(123, 77, 255, 0.1);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-      font-size: 1.5rem;
-      color: var(--primary);
-    }
-
-    .skill-card h3 {
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      color: var(--text);
-    }
-
-    .skill-card p {
-      color: var(--text-light);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Portfolio section */
-    .portfolio {
-      padding: 5rem 1.5rem;
-      background: rgba(11, 11, 15, 0.4);
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .portfolio-item {
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      position: relative;
-      transition: var(--transition);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-8px);
-    }
-
-    .portfolio-image {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-
-    .portfolio-content {
-      padding: 1.5rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .portfolio-tag {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      margin-bottom: 0.8rem;
-      align-self: flex-start;
-    }
-
-    .portfolio-title {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-
-    .portfolio-description {
-      color: var(--text-light);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
-
-    .portfolio-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .portfolio-link {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--primary);
-      font-weight: 600;
-      transition: var(--transition);
-    }
-
-    .portfolio-link:hover {
-      color: var(--primary-light);
-      gap: 0.7rem;
-    }
-
-    /* About section */
-    .about {
-      padding: 5rem 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .about-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .about-text {
-      line-height: 1.8;
-    }
-
-    .about-text p {
-      margin-bottom: 1.5rem;
-      color: var(--text-light);
-    }
-
-    .about-highlight {
-      color: var(--secondary);
-      font-weight: 600;
-    }
-
-    /* Contact section */
-    .contact {
-      padding: 5rem 1.5rem;
-      background: linear-gradient(135deg, #1c1528 0%, #10091a 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(123, 77, 255, 0.1) 0%, transparent 70%);
-      z-index: 0;
-    }
-
-    .contact-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-
-    .contact p {
-      color: var(--text-light);
-      font-size: 1.2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.7rem;
-      color: var(--text-light);
-      transition: var(--transition);
-    }
-
-    .social-link:hover {
-      color: var(--secondary);
-    }
-
-    .social-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      transition: var(--transition);
-    }
-
-    .social-link:hover .social-icon {
-      background: var(--primary);
-      transform: translateY(-5px);
-    }
+    .grid{display:grid;gap:1.25rem}
+    @media (min-width: 760px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{padding:1.5rem;text-align:center}
+    .card:hover{transform:translateY(-6px)}
+    .card h3{margin:.6rem 0 .4rem;font-size:1.1rem;color:var(--text-100)}
+    .card p{color:var(--text-500)}
+    .icon{width:56px;height:56px;border-radius:14px;margin:0 auto .75rem;display:grid;place-items:center;background:rgba(124,77,255,.12);color:#fff}
 
     /* Footer */
-    footer {
-      padding: 3rem 1.5rem 2rem;
-      background-color: var(--darker);
-      border-top: 1px solid rgba(46, 43, 58, 0.5);
-      text-align: center;
+    footer{margin-top:3rem;padding:2rem 0;border-top:1px solid rgba(46,43,58,.4);background:var(--bg-900)}
+    footer .row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;color:var(--text-500)}
+    footer nav{display:flex;gap:1rem}
+    footer a{color:var(--text-500)}
+    footer a:hover{color:var(--primary-600)}
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      .btn:hover,.card:hover{transform:none}
     }
 
-    .copyright {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
+    /* Community */
+    .presence{display:flex;gap:1rem;align-items:center}
+    .presence .avatar{width:56px;height:56px;border-radius:999px;overflow:hidden;border:2px solid var(--glass-border)}
+    .presence .avatar img{width:100%;height:100%;object-fit:cover}
+    .presence .meta{display:flex;flex-direction:column;gap:.2rem}
+    .status{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .5rem;border:1px solid var(--glass-border);border-radius:999px;font-size:.85rem}
+    .dot{width:8px;height:8px;border-radius:999px;display:inline-block}
+    .dot.online{background:#22c55e}
+    .dot.dnd{background:#ef4444}
+    .dot.idle{background:#f59e0b}
+    .dot.offline{background:#6b7280}
 
-    /* iOS Home Screen Prompt */
-    .ios-prompt {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--glass);
-      backdrop-filter: var(--blur);
-      -webkit-backdrop-filter: var(--blur);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--border-radius);
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      z-index: 1000;
-      max-width: 320px;
-      transform: translateY(100px);
-      animation: slideUp 0.5s forwards 1s;
-      box-shadow: var(--shadow);
-    }
+    .platforms{display:flex;gap:.4rem;margin-top:.25rem}
+    .pill{font-size:.75rem;padding:.15rem .5rem;border:1px solid var(--glass-border);border-radius:999px;opacity:.6}
+    .pill.active{opacity:1;border-color:rgba(124,77,255,.45)}
 
-    .ios-prompt i {
-      font-size: 24px;
-      color: var(--primary);
-    }
+    .community-grid{--cols:2;display:grid;gap:1rem;align-items:center;justify-content:center;place-items:center;grid-template-columns:repeat(var(--cols), minmax(280px,1fr))}
+    @media (max-width: 760px){.community-grid{grid-template-columns:1fr}}
+    .join-card{display:grid;gap:.5rem;align-content:start;justify-items:center;text-align:center;padding:1rem;border:1px solid var(--glass-border);border-radius:var(--radius)}
 
-    .ios-prompt p {
-      font-size: 14px;
-      color: var(--text-light);
-    }
-
-    .ios-prompt button {
-      background: transparent;
-      border: none;
-      color: var(--primary-light);
-      font-size: 24px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .ios-prompt button:hover {
-      color: var(--secondary);
-    }
-
-    @keyframes slideUp {
-      to {
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      nav {
-        display: none;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-        width: 100%;
-      }
-      
-      .btn {
-        width: 100%;
-      }
-      
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero {
-        padding: 4rem 1.5rem 3rem;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .section-header h2 {
-        font-size: 2rem;
-      }
-      
-      .profile-image {
-        width: 140px;
-        height: 140px;
-      }
-      
-      .logo-icon {
-        width: 36px;
-        height: 36px;
-      }
-    }
+    .activity{display:none;gap:.6rem;align-items:center;margin-top:.45rem}
+    .act-art{width:40px;height:40px;border-radius:10px;overflow:hidden;border:1px solid var(--glass-border)}
+    .act-text{font-size:.9rem;color:var(--text-500)}
+    .activity-box{display:none;min-height:220px;align-items:center;justify-content:center}
+    .activity-inner{display:flex;align-items:center;gap:.8rem;text-align:left}
+    .activity-inner .act-art{width:64px;height:64px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border)}
+    .activity-inner .act-text{font-size:1rem;color:var(--text-100)}
+    .community-grid.has-activity{grid-template-columns:1fr 1fr minmax(260px,340px)}
+    .community-grid > *{justify-self:center}
+    .card-block{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:220px;padding:1rem;border:1px solid var(--glass-border);border-radius:var(--radius);width:100%;max-width:560px;text-align:center}
+    .presence.card-block{gap:0.75rem}
+    .presence .meta{display:flex;flex-direction:column;gap:.35rem;align-items:center;text-align:center}
+    .status{justify-content:center}
+    .platforms{justify-content:center}
   </style>
 </head>
-
 <body>
-  <!-- iOS Home Screen Prompt -->
-  <div class="ios-prompt glass">
-    <i class="fas fa-plus-circle"></i>
-    <p>Add to Home Screen for full experience</p>
-    <button id="close-prompt">&times;</button>
-  </div>
-
-  <header class="glass">
-    <a href="#" class="logo">
-      <div class="logo-icon">
-        <img src="https://media.discordapp.net/attachments/1200751717873098843/1278365587894046803/images_11.png?ex=685b637b&is=685a11fb&hm=84d08c30f55b29eee281890c553fc3d4048a2090bd9fc748252d2dbc210a4595&=&format=webp&quality=lossless&width=174&height=130" alt="zensware logo" class="logo-image">
-      </div>
-      <span>zensware.com</span>
-    </a>
-    <nav>
-      <a href="#skills">Skills</a>
-      <a href="#portfolio">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#" aria-label="zensware home">
+        <span class="logo glass"><img alt="zensware logo" src="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png" loading="lazy" decoding="async"></span>
+        <span>zensware.com</span>
+      </a>
+      <button class="menu-btn" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <nav id="primary-nav" class="links" role="navigation">
+        <a href="#features">Features</a>
+        <a href="#docs">Documentation</a>
+        <a href="#community">Community</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="profile-container">
-        <img src="https://media.discordapp.net/attachments/1379111968069128302/1387072955866943592/f655b9b3-d01f-4454-b81f-0e9db46ab095.png?ex=685c03db&is=685ab25b&hm=1f813797e0248a3d553b7d690c9f6d5a7f8cb25d4d2d35067490367e53e5db6c&=&format=webp&quality=lossless&width=448&height=671" alt="Profile" class="profile-image">
-        <div class="status-badge">
-          <i class="fas fa-check"></i>
+  <main id="main">
+    <section class="hero">
+      <div class="glow one"></div>
+      <div class="glow two"></div>
+      <div class="container">
+        <h1>zensware.com</h1>
+        <p>Best undetected external Valorant Cheat out at the moment!</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.mediafire.com/file/1t6m3v11un811ih/zensware-v1.1.zip/file" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l4-4m-4 4l-4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Download</span>
+          </a>
+        </div>
+        <div class="scroll-cue">
+          <a href="#features" aria-label="Scroll to features">
+            <span>Scroll for features & docs</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </a>
         </div>
       </div>
-      <h1>Hi, I'm zensware</h1>
-      <p>I love to create <span class="highlight">applications</span> for gamers and developers. My focus is creating efficient & light-weight programs that satisfies the users needs!</p>
-      <div class="cta-buttons">
-        <a href="#portfolio" class="btn btn-primary">View My Projects</a>
-        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="skills" id="skills">
-    <div class="section-header">
-      <h2>My Expertise</h2>
-      <p>I specialize in only a few subjects</p>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-card glass">
-        <div class="skill-icon">
-          <i class="fab fa-discord"></i>
-        </div>
-        <h3>Discord Development</h3>
-        <p>Building bots and integrations for Discord communities</p>
+    <section id="features" class="container" aria-labelledby="features-title">
+      <div class="section-head">
+        <h2 id="features-title">Key Takeaways</h2>
+        <p></p>
       </div>
-      
-      <div class="skill-card glass">
-        <div class="skill-icon">
-          <i class="fas fa-globe"></i>
-        </div>
-        <h3>Web Development</h3>
-        <p>Creating minimalistic websites and web applications</p>
+      <div class="grid cols-3">
+        <article class="card glass">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Undetected & Safe</h3>
+          <p>We've been undetected since June (2025) with no informed user bans.</p>
+        </article>
+        <article class="card glass">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h12M4 17h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Easy to use</h3>
+          <p>Single executable. Minimal overlay. JSON config for quick changes.</p>
+        </article>
+        <article class="card glass">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Precision & detection</h3>
+          <p>Optimized pixel matching in a tight region with adjustable tolerance.</p>
+        </article>
       </div>
-      
-      <div class="skill-card glass">
-        <div class="skill-icon">
-          <i class="fab fa-python"></i>
-        </div>
-        <h3>Python</h3>
-        <p>Making applications with Python for Automation</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="portfolio" id="portfolio">
-    <div class="section-header">
-      <h2>My Projects</h2>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-item glass">
-        <img src="https://media.discordapp.net/attachments/1379111968069128302/1386785033796325486/FAEA1CD6-221D-4F56-B355-6908612D0F52.png?ex=685ba075&is=685a4ef5&hm=53d0a5a24fd29b3919498ecfab15905457291bb8e685ee80dec05e5449326d97&=&format=webp&quality=lossless&width=393&height=151" alt="Webhook Spammer" class="portfolio-image">
-        <div class="portfolio-content">
-          <span class="portfolio-tag">Discord Tool</span>
-          <h3 class="portfolio-title">Webhook Spammer</h3>
-          <p class="portfolio-description">A powerful tool for webhooks by sending multiple requests. Useful for raiding servers.</p>
-          <div class="portfolio-links">
-            <a href="https://zensware.com/Webhook-IOS-App/" class="portfolio-link" target="_blank">
-              <i class="fas fa-external-link-alt"></i> Visit Project
+    <section id="docs" class="container" aria-labelledby="docs-title" style="margin-top:2rem">
+      <div class="section-head">
+        <h2 id="docs-title">Documentation</h2>
+        <p>Simple, step-by-step setup for Windows users. No technical background required.</p>
+      </div>
+      <div class="glass" style="padding:1rem">
+        <details open>
+          <summary><strong>1) Quick start (EXE)</strong></summary>
+          <div style="padding:.5rem 0 0">
+            <ol>
+              <li>Download the zip above and extract it.</li>
+              <li>Right-click the <strong>.exe</strong> and choose <strong>Run as administrator</strong>.
+                <div style="font-size:.95rem;color:var(--text-500)">Admin mode lets global hotkeys work reliably.</div>
+              </li>
+              <li>On first run an on-screen status box (OSD) appears at the top-left.</li>
+              <li>If Windows SmartScreen shows a warning, choose <strong>More info → Run anyway</strong>.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary><strong>2) First run basics</strong></summary>
+          <div style="padding:.5rem 0 0">
+            <ul>
+              <li><strong>OSD</strong>: shows <em>On/Off</em>, current <em>Mode</em>, and the active <em>Shoot Bind</em>.</li>
+              <li><strong>Two modes</strong>:
+                <ul>
+                  <li><code>HOLD</code>: active only while you hold the chosen key or mouse button.</li>
+                  <li><code>TOGGLE</code>: press once to turn on, press again to turn off.</li>
+                </ul>
+              </li>
+              <li><strong>Quit</strong> at any time with the <kbd>Delete</kbd> key.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary><strong>3) Controls you need</strong></summary>
+          <div style="padding:.5rem 0 0">
+            <ul>
+              <li><strong>Toggle on/off</strong> in toggle mode: <kbd>Insert</kbd>.</li>
+              <li><strong>Hold mode</strong>: press and hold your <code>HOLD_KEY</code> (default <code>mouse4</code>).</li>
+              <li><strong>Switch the Shoot Bind</strong>: press <kbd>Right Arrow</kbd> to cycle through options. Match the <em>Alternate Shootbind</em> in your other software to what the OSD shows. If the key stops working, press <kbd>Right Arrow</kbd> again until it matches.</li>
+              <li><strong>Quit</strong>: <kbd>Delete</kbd>.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary><strong>4) Config file (optional)</strong></summary>
+          <div style="padding:.5rem 0 0">
+            <p>After the first run, a <code>config.json</code> is created next to the executable. You can edit it with Notepad.</p>
+            <details>
+              <summary>Keys explained</summary>
+              <ul>
+                <li><code>MODE</code>: <code>"hold"</code> or <code>"toggle"</code>.</li>
+                <li><code>HOLD_KEY</code>, <code>TOGGLE_KEY</code>, <code>QUIT_KEY</code>: hotkeys you prefer.</li>
+                <li><code>SHOOT_BIND_OPTIONS</code>: list of keys to send on detection.</li>
+                <li><code>SHOOT_BIND</code>: which one of the above is active on start.</li>
+                <li><code>SCAN_SIZE</code>: scan square half-width in pixels around the screen center.</li>
+                <li><code>TOLERANCE</code>: color match tolerance. Larger = more matches.</li>
+                <li><code>CLICK_DELAY</code>: seconds between key presses; <code>0</code> uses a fast default.</li>
+              </ul>
+              <details>
+                <summary>Template</summary>
+                <pre class="glass" style="padding:.75rem;overflow:auto"><code>{
+  "MODE": "hold",
+  "SHOOT_BIND": "8",
+  "SHOOT_BIND_OPTIONS": ["7","8","9","0"],
+  "HOLD_KEY": "mouse4",
+  "TOGGLE_KEY": "insert",
+  "QUIT_KEY": "delete",
+  "SCAN_SIZE": 2,
+  "TOLERANCE": 10,
+  "CLICK_DELAY": 0
+}</code></pre>
+              </details>
+            </details>
+          </div>
+        </details>
+
+        <details>
+          <summary><strong>5) Common issues</strong></summary>
+          <div style="padding:.5rem 0 0">
+            <ul>
+              <li><strong>Hotkeys do nothing</strong>: re-run the app as Administrator.</li>
+              <li><strong>OSD not visible</strong>: check that it isn't behind overlays; ensure transparency effects are on in Windows Settings.</li>
+              <li><strong>High CPU</strong>: lower <code>SCAN_SIZE</code> or increase <code>CLICK_DELAY</code> in <code>config.json</code>.</li>
+              <li><strong>It never triggers</strong>: increase <code>TOLERANCE</code> a little or check that the active Shoot Bind matches your other software's input.</li>
+              <li><strong>Wrong key sent</strong>: press <kbd>Right Arrow</kbd> to cycle binds until the OSD shows the one you expect.</li>
+              <li><strong>Stuck On/Off status</strong>: in <code>HOLD</code> mode ensure the correct mouse side button is set (<code>mouse4</code> vs <code>mouse5</code>).</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="community" class="container" aria-labelledby="community-title" style="margin-top:2rem">
+      <div class="section-head">
+        <h2 id="community-title">Community</h2>
+        <p>Live presence on the left. Quick join on the right.</p>
+      </div>
+      <div id="community-grid" class="glass community-grid" style="padding:1rem">
+        <!-- Left: Lanyard presence -->
+        <div class="presence card-block glass">
+          <span class="avatar"><img id="lanyard-avatar" alt="Discord avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" loading="lazy" decoding="async"></span>
+          <div class="meta">
+            <strong id="lanyard-username">zensware</strong>
+            <span class="status" id="lanyard-status"><span class="dot offline"></span><span>offline</span></span>
+            <div class="platforms" aria-label="Platforms">
+              <span class="pill" id="plat-web">Web</span>
+              <span class="pill" id="plat-desktop">Desktop</span>
+              <span class="pill" id="plat-mobile">Mobile</span>
+            </div>
+          </div>
+        </div>
+        <!-- Middle: Activity box -->
+        <div class="activity-box glass card-block" id="activity-box">
+          <div class="activity-inner">
+            <span class="act-art"><img id="activity-art" alt="" style="width:100%;height:100%;object-fit:cover;display:none"></span>
+            <span class="act-text" id="activity-line"></span>
+          </div>
+        </div>
+        <!-- Right: Join card -->
+        <div class="join-card card-block glass">
+          <div>
+            <strong>Support & community server</strong>
+            <p style="margin:.25rem 0 0;color:var(--text-500)">Get help, updates, and chat with others.</p>
+          </div>
+          <p style="margin:0">
+            <a class="btn btn-ghost glass" href="https://discord.gg/stWgVnBgHq" target="_blank" rel="noopener" aria-label="Join the zensware Discord server">
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M7.5 4h9l1.5 3v9l-4 2-1-1h-3l-1 1-4-2V7l1.5-3z" fill="currentColor"/></svg>
+              <span>Join Discord</span>
             </a>
-          </div>
+          </p>
         </div>
       </div>
-      
-      <div class="portfolio-item glass">
-        <img src="https://media.discordapp.net/attachments/1379111968069128302/1387063636228440254/Untitled2.jpg?ex=685bfb2d&is=685aa9ad&hm=d7365b3efda6fd50446299baa5f4493f6a553ede66fe98b2b511a2df420d9ccf&=&format=webp&width=1286&height=724" alt="Valorant Color-Bot" class="portfolio-image">
-        <div class="portfolio-content">
-          <span class="portfolio-tag">External Cheat</span>
-          <h3 class="portfolio-title">Valorant Color-Bot</h3>
-          <p class="portfolio-description">Advanced Enemy detection for a competitive advantage. Ultra-fast scanning with customizable settings for optimal performance.</p>
-          <div class="portfolio-links">
-            <a href="./pages/colorbot.html" class="portfolio-link">
-              <i class="fas fa-download"></i> Download
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="about" id="about">
-    <div class="section-header">
-      <h2>About Me</h2>
-    </div>
-    <div class="about-content glass" style="padding: 2.5rem; border-radius: var(--border-radius);">
-      <div class="about-text">
-        <p>I'm a 18 year old developer who focuses on creating practical and programs that solve my specific needs. I started 4 years ago when I needed simple things for my own needs and started developing applications with help from Youtube, and I realized others might benefit from what I make too.</p>
-        
-        <p>My main focus when it comes to developing is building <span class="about-highlight">lean, functional applications</span> without unnecessary complexity. Whether it's a exploits or day to day applications, I prioritize performance and usability.</p>
-        
-        <p>My development follows this ideology: <span class="about-highlight">Create something with efficient code</span>. I believe in creating apps that just work, without bloat or unnecessary features.</p>
-        
-        <p>When I'm not coding, I'm usually either attending school or working out at the gym. I've as of recently started detaching myself from my pc...</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="contact-content glass" style="padding: 3rem; border-radius: var(--border-radius);">
-      <h2>Get In Touch</h2>
-      <p>Have questions about my what I make? Reach out through my socials</p>
-      
-      <div class="social-links">
-        <a href="https://discord.gg/stWgVnBgHq" class="social-link" target="_blank">
-          <div class="social-icon">
-            <i class="fab fa-discord"></i>
-          </div>
-          <span>Discord</span>
-        </a>
-        
-        <a href="https://t.me/zensware" class="social-link" target="_blank">
-          <div class="social-icon">
-            <i class="fab fa-telegram"></i>
-          </div>
-          <span>Telegram</span>
-        </a>
-      </div>
-    </div>
-  </section>
+  </main>
 
   <footer>
-    <div class="copyright">
-      <p>&copy; 2023 zensware. All projects created with passion.</p>
+    <div class="container row">
+      <p>© <span id="year"></span> zensware</p>
     </div>
   </footer>
 
   <script>
-    // Close iOS prompt
-    document.getElementById('close-prompt').addEventListener('click', function() {
-      document.querySelector('.ios-prompt').style.display = 'none';
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const links = document.querySelector('.links');
+    menuBtn?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
     });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 80,
-            behavior: 'smooth'
-          });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // -------- Lanyard presence (live refresh every 2s, paused when hidden) --------
+    const LANYARD_URL = 'https://api.lanyard.rest/v1/users/1017306008424566845';
+    const statusMap = { online:'online', dnd:'dnd', idle:'idle', offline:'offline' };
+
+    const statusEl = document.getElementById('lanyard-status');
+    const dotEl = statusEl.querySelector('.dot');
+    const avatarEl = document.getElementById('lanyard-avatar');
+    const userEl = document.getElementById('lanyard-username');
+
+    const gridEl = document.getElementById('community-grid');
+    const actWrap = document.getElementById('activity-box');
+    const actLine = document.getElementById('activity-line');
+    const actArt = document.getElementById('activity-art');
+
+    const setPill = (id, active) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('active', !!active);
+      el.setAttribute('aria-pressed', !!active);
+    };
+
+    async function refreshPresence() {
+      try {
+        const res = await fetch(LANYARD_URL, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Lanyard error');
+        const { data } = await res.json();
+
+        // status
+        const s = statusMap[data.discord_status] || 'offline';
+        dotEl.className = 'dot ' + s;
+        statusEl.lastElementChild.textContent = s;
+
+        // user
+        if (data.discord_user) {
+          const u = data.discord_user;
+          const display = u.display_name || u.global_name || u.username;
+          const handle = u.discriminator && u.discriminator !== '0' ? `${u.username}#${u.discriminator}` : `@${u.username}`;
+          userEl.textContent = `${display} (${handle})`;
+          const av = u.avatar
+            ? `https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.png?size=128`
+            : `https://cdn.discordapp.com/embed/avatars/${(Number(u.id) >> 22) % 6}.png`;
+          if (avatarEl.src !== av) avatarEl.src = av;
         }
-      });
-    });
-    
-    // Only show iOS prompt on iOS devices
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    if (!isIOS) {
-      document.querySelector('.ios-prompt').style.display = 'none';
+
+        // platforms
+        setPill('plat-web',     data.active_on_discord_web);
+        setPill('plat-desktop', data.active_on_discord_desktop);
+        setPill('plat-mobile',  data.active_on_discord_mobile);
+
+        // activity / spotify
+        const showActivity = (text, artUrl) => {
+          actLine.textContent = text || '';
+          if (artUrl) {
+            actArt.src = artUrl;
+            actArt.style.display = 'block';
+          } else {
+            actArt.style.display = 'none';
+          }
+          actWrap.style.display = 'flex';
+          gridEl.classList.add('has-activity');
+        };
+
+        let shown = false;
+        if (data.listening_to_spotify && data.spotify) {
+          const spt = data.spotify;
+          showActivity(`Listening to ${spt.song} — ${spt.artist}`, spt.album_art_url);
+          shown = true;
+        }
+        if (!shown && Array.isArray(data.activities)) {
+          const a = data.activities.find(x => x && typeof x === 'object' && x.type !== 4 && x.name);
+          if (a) {
+            const parts = [a.name, a.details, a.state].filter(Boolean);
+            showActivity(parts.join(' — '));
+            shown = true;
+          }
+        }
+
+        if (!shown) {
+          actWrap.style.display = 'none';
+          gridEl.classList.remove('has-activity');
+        }
+      } catch (_) {
+        // silent fail; keep last known state
+      }
     }
-    
-    // Check if app is already installed
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      document.querySelector('.ios-prompt').style.display = 'none';
+
+    let poller;
+    function startPolling(){
+      clearInterval(poller);
+      refreshPresence();
+      poller = setInterval(refreshPresence, 2000);
+    }
+    function stopPolling(){
+      clearInterval(poller);
+      poller = null;
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopPolling();
+      else startPolling();
     });
+
+    startPolling();
   </script>
 </body>
-
 </html>
