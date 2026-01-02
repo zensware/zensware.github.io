@@ -3,32 +3,267 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>soon..</title>
+  <title>Refund Policy - zensware</title>
+  <meta name="description" content="zensware refund policy and customer support guidelines" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png">
+  <meta property="og:title" content="Refund Policy - zensware" />
+  <meta property="og:description" content="Refund policy and customer support guidelines" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png" />
+  <meta name="twitter:card" content="summary" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0b0b0f;
-      color: #fff;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
+    :root{
+      --primary:#7c4dff;--primary-600:#a974ff;--primary-700:#915eff;
+      --bg-950:#06060a;--bg-900:#0b0b0f;--bg-800:#1c1528;
+      --glass:rgba(22,19,31,.5);--glass-border:rgba(255,255,255,.08);
+      --text-100:#f4f2ff;--text-300:#e3dcff;--text-500:#c0b3e6;--ok:#4caf50;
+      --radius:18px;--shadow:0 10px 30px rgba(0,0,0,.35);--blur:12px;
+      --gap:1rem;--transition:transform .25s ease,opacity .25s ease,background-color .25s ease,color .25s ease,border-color .25s ease;
+      --header-h:64px;
     }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;background:linear-gradient(135deg,var(--bg-950),var(--bg-800));color:var(--text-300);-webkit-font-smoothing:antialiased;moz-osx-font-smoothing:grayscale}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+    .glass{background:var(--glass);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid var(--glass-border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.5rem .75rem;border-radius:.5rem;background:#111;color:#fff;z-index:999}
+
+    /* Header - Minimal */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,11,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(46,43,58,.4)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;min-height:var(--header-h)}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;font-size:1.25rem;color:var(--text-100)}
+    .brand .logo{width:40px;height:40px;border-radius:10px;overflow:hidden;display:grid;place-items:center}
+    .brand img{width:100%;height:100%;object-fit:cover}
+    .links{display:flex;gap:1.25rem;align-items:center}
+    .links a{color:var(--text-500);font-weight:600;letter-spacing:.2px;position:relative}
+    .links a:focus-visible,.links a:hover{color:var(--primary-600)}
+    .links a.active{color:var(--primary-600)}
+
+    .menu-btn{display:none;appearance:none;border:1px solid var(--glass-border);background:transparent;color:var(--text-300);border-radius:12px;padding:.5rem .6rem;cursor:pointer}
+    .menu-btn svg{display:block}
+
+    /* Mobile menu */
+    @media (max-width: 820px){
+      .menu-btn{display:inline-flex}
+      .links{display:none}
+      .links.open{display:flex;position:absolute;left:1rem;right:1rem;top:64px;padding:1rem;background:rgba(11,11,15,.92);border:1px solid var(--glass-border);border-radius:14px;flex-direction:column}
+      .links a{padding:.5rem}
+    }
+
+    /* Hero */
+    .hero{position:relative;min-height:calc(40svh - var(--header-h));text-align:center;overflow:clip;display:flex;align-items:center}
+    .hero .container{min-height:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 0}
+    .glow{position:absolute;inset:auto;pointer-events:none;z-index:-1;filter:blur(90px);opacity:.35}
+    .glow.one{width:260px;height:260px;background:radial-gradient(circle,var(--primary) 0%,transparent 70%);left:6%;top:8%}
+    .glow.two{width:280px;height:280px;background:radial-gradient(circle,var(--primary-600) 0%,transparent 70%);right:8%;bottom:12%}
+    .hero h1{font-size:min(9vw,3.25rem);line-height:1.15;margin:.25rem 0 .75rem;background:linear-gradient(90deg,var(--text-100),var(--primary-600));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+    .hero p{max-width:760px;margin:0 auto 1.25rem;color:var(--text-500);font-size:1.05rem}
+
+    /* Footer */
+    footer{margin-top:3rem;padding:2rem 0;border-top:1px solid rgba(46,43,58,.4);background:var(--bg-900)}
+    footer .row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;color:var(--text-500)}
+    footer nav{display:flex;gap:1rem}
+    footer a{color:var(--text-500)}
+    footer a:hover{color:var(--primary-600)}
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+    }
+
+    /* Policy Content */
+    .policy-content{max-width:800px;margin:3rem auto}
+    .policy-section{margin-bottom:2.5rem}
+    .policy-section h2{color:var(--text-100);margin:0 0 1rem;font-size:1.5rem}
+    .policy-section p{color:var(--text-500);line-height:1.6;margin:0 0 1rem}
+    .policy-section ul,.policy-section ol{margin:1rem 0;padding-left:1.5rem}
+    .policy-section li{color:var(--text-500);margin-bottom:.75rem;line-height:1.6}
+    .policy-section strong{color:var(--text-300);font-weight:600}
     
-    @media (max-width: 768px) {
-      body {
-        font-size: 2rem;
-      }
-    }
+    .important-note{padding:1.5rem;background:rgba(124,77,255,0.1);border:1px solid rgba(124,77,255,0.3);border-radius:var(--radius);margin:2rem 0}
+    .warning-note{padding:1.5rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius);margin:2rem 0}
+    .info-note{padding:1.5rem;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:var(--radius);margin:2rem 0}
+    
+    .policy-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem;margin:2rem 0}
+    .policy-card{padding:1.5rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius)}
+    .policy-card h3{color:var(--text-100);margin:0 0 .75rem;font-size:1.2rem}
+    .policy-card p{color:var(--text-500);margin:0;font-size:.95rem}
+    
+    .contact-method{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);margin-bottom:1rem}
+    .contact-icon{width:40px;height:40px;border-radius:10px;background:rgba(124,77,255,.2);display:grid;place-items:center;color:var(--primary);flex-shrink:0}
+    .contact-details{flex:1}
+    .contact-details h4{color:var(--text-100);margin:0 0 .25rem;font-size:1rem}
+    .contact-details p{color:var(--text-500);margin:0;font-size:.9rem}
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
-  soon..
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Back to home">
+        <span class="logo glass">
+          <img alt="zensware logo" src="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png" loading="lazy" decoding="async">
+        </span>
+      </a>
+      <button class="menu-btn" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <nav id="primary-nav" class="links" role="navigation">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/tos.html">TOS</a>
+        <a href="#" class="active">Refunds</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="glow one"></div>
+      <div class="glow two"></div>
+      <div class="container">
+        <h1>Refund Policy</h1>
+        <p>Our guidelines for refunds, customer support, and issue resolution</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="important-note">
+        <p><strong>Important:</strong> Most of our software is available for free. This policy primarily applies to any paid services, donations, or premium features we may offer.</p>
+      </div>
+
+      <div class="policy-content">
+        <div class="policy-section">
+          <h2>General Refund Policy</h2>
+          <p>We stand behind the quality of our software. However, due to the digital nature of our products and services, we have specific refund policies in place:</p>
+          
+          <div class="policy-grid">
+            <div class="policy-card">
+              <h3>Digital Products</h3>
+              <p>Digital software purchases are typically non-refundable once the download link has been accessed or the product has been delivered.</p>
+            </div>
+            <div class="policy-card">
+              <h3>Service Issues</h3>
+              <p>If our software is fundamentally non-functional or fails to operate as advertised, we will work with you to resolve the issue or provide a refund.</p>
+            </div>
+            <div class="policy-card">
+              <h3>Donations</h3>
+              <p>All donations are non-refundable as they are considered voluntary contributions to support development.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <h2>Eligibility for Refunds</h2>
+          <p>Refunds may be considered under the following circumstances:</p>
+          <ul>
+            <li><strong>Technical Issues:</strong> The software fails to work on a system meeting minimum requirements</li>
+            <li><strong>False Advertising:</strong> The product does not perform as explicitly described on our website</li>
+            <li><strong>Duplicate Charges:</strong> You were accidentally charged multiple times for the same product</li>
+            <li><strong>Unauthorized Purchase:</strong> The purchase was made without your consent or by a minor</li>
+          </ul>
+        </div>
+
+        <div class="policy-section">
+          <h2>Non-Refundable Situations</h2>
+          <p>We cannot provide refunds in these cases:</p>
+          <ul>
+            <li>Change of mind after purchase</li>
+            <li>Failure to read system requirements before purchase</li>
+            <li>Incompatibility with third-party software or hardware</li>
+            <li>Violation of our Terms of Service leading to access revocation</li>
+            <li>Purchases made more than 14 days ago</li>
+            <li>Digital products that have been downloaded, accessed, or used</li>
+            <li>Issues arising from user error or improper configuration</li>
+          </ul>
+        </div>
+
+        <div class="warning-note">
+          <p><strong>Warning:</strong> Attempting to initiate chargebacks or fraudulent refund requests will result in permanent ban from all our services and may lead to legal action.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>How to Request a Refund</h2>
+          <p>If you believe you're eligible for a refund, please follow these steps:</p>
+          <ol>
+            <li><strong>Contact Support First:</strong> Reach out to our support team with detailed information about your issue</li>
+            <li><strong>Provide Evidence:</strong> Include screenshots, error messages, and system information</li>
+            <li><strong>Allow Time for Resolution:</strong> We typically respond within 24-48 hours</li>
+            <li><strong>Follow Instructions:</strong> Our support team may provide troubleshooting steps before approving a refund</li>
+          </ol>
+        </div>
+
+        <div class="info-note">
+          <p><strong>Tip:</strong> Most technical issues can be resolved through our support channels. Contact us before requesting a refund.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>Refund Processing</h2>
+          <p>If your refund is approved:</p>
+          <ul>
+            <li>Refunds are processed within 5-10 business days</li>
+            <li>The refund will be issued to your original payment method</li>
+            <li>You will receive email confirmation when the refund is processed</li>
+            <li>Access to the software/service will be revoked immediately upon refund approval</li>
+          </ul>
+        </div>
+
+        <div class="policy-section">
+          <h2>Contact Support</h2>
+          <p>For refund inquiries or technical support:</p>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div class="contact-details">
+              <h4>Discord Support</h4>
+              <p>Join our Discord server and open a ticket in the #support channel</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-details">
+              <h4>Email Support</h4>
+              <p>Contact us via email with your purchase details and issue description</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container row">
+      <p>© <span id="year"></span> zensware.com</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const links = document.querySelector('.links');
+    menuBtn?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
