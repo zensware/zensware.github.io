@@ -3,32 +3,230 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>soon..</title>
+  <title>About - zensware</title>
+  <meta name="description" content="Learn about zensware - our team, values, and journey as innovative software developers." />
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png">
+  <meta property="og:title" content="About - zensware" />
+  <meta property="og:description" content="Learn about our team, values, and journey as innovative software developers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png" />
+  <meta name="twitter:card" content="summary" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0b0b0f;
-      color: #fff;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
+    :root{
+      --primary:#7c4dff;--primary-600:#a974ff;--primary-700:#915eff;
+      --bg-950:#06060a;--bg-900:#0b0b0f;--bg-800:#1c1528;
+      --glass:rgba(22,19,31,.5);--glass-border:rgba(255,255,255,.08);
+      --text-100:#f4f2ff;--text-300:#e3dcff;--text-500:#c0b3e6;--ok:#4caf50;
+      --radius:18px;--shadow:0 10px 30px rgba(0,0,0,.35);--blur:12px;
+      --gap:1rem;--transition:transform .25s ease,opacity .25s ease,background-color .25s ease,color .25s ease,border-color .25s ease;
+      --header-h:64px;
     }
-    
-    @media (max-width: 768px) {
-      body {
-        font-size: 2rem;
-      }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;background:linear-gradient(135deg,var(--bg-950),var(--bg-800));color:var(--text-300);-webkit-font-smoothing:antialiased;moz-osx-font-smoothing:grayscale}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+    .glass{background:var(--glass);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid var(--glass-border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.5rem .75rem;border-radius:.5rem;background:#111;color:#fff;z-index:999}
+
+    /* Header - Minimal */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,11,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(46,43,58,.4)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;min-height:var(--header-h)}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;font-size:1.25rem;color:var(--text-100)}
+    .brand .logo{width:40px;height:40px;border-radius:10px;overflow:hidden;display:grid;place-items:center}
+    .brand img{width:100%;height:100%;object-fit:cover}
+    .links{display:flex;gap:1.25rem;align-items:center}
+    .links a{color:var(--text-500);font-weight:600;letter-spacing:.2px;position:relative}
+    .links a:focus-visible,.links a:hover{color:var(--primary-600)}
+    .links a.active{color:var(--primary-600)}
+
+    .menu-btn{display:none;appearance:none;border:1px solid var(--glass-border);background:transparent;color:var(--text-300);border-radius:12px;padding:.5rem .6rem;cursor:pointer}
+    .menu-btn svg{display:block}
+
+    /* Mobile menu */
+    @media (max-width: 820px){
+      .menu-btn{display:inline-flex}
+      .links{display:none}
+      .links.open{display:flex;position:absolute;left:1rem;right:1rem;top:64px;padding:1rem;background:rgba(11,11,15,.92);border:1px solid var(--glass-border);border-radius:14px;flex-direction:column}
+      .links a{padding:.5rem}
     }
+
+    /* Hero (About Us section) */
+    .hero{position:relative;min-height:calc(80svh - var(--header-h));text-align:center;overflow:clip;display:flex;align-items:center}
+    .hero .container{min-height:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 0}
+    .glow{position:absolute;inset:auto;pointer-events:none;z-index:-1;filter:blur(90px);opacity:.35}
+    .glow.one{width:260px;height:260px;background:radial-gradient(circle,var(--primary) 0%,transparent 70%);left:6%;top:8%}
+    .glow.two{width:280px;height:280px;background:radial-gradient(circle,var(--primary-600) 0%,transparent 70%);right:8%;bottom:12%}
+    .hero h1{font-size:min(9vw,3.25rem);line-height:1.15;margin:.25rem 0 .75rem;background:linear-gradient(90deg,var(--text-100),var(--primary-600));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+    .hero p{max-width:760px;margin:0 auto 1.25rem;color:var(--text-500);font-size:1.05rem}
+    .hero-subtitle{font-size:1.2rem;color:var(--text-300);margin-bottom:2rem;max-width:800px}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.35rem;border-radius:14px;border:1px solid var(--glass-border);background:rgba(255,255,255,.04);font-weight:700;letter-spacing:.2px;transition:var(--transition)}
+    .btn svg{width:18px;height:18px}
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 24px rgba(124,77,255,.4)}
+    .btn-primary:hover{transform:translateY(-2px);background:var(--primary-700)}
+    .btn-ghost:hover{background:rgba(255,255,255,.06)}
+
+    /* Sections */
+    section{scroll-margin-top:90px}
+    .section-head{text-align:center;margin:2rem 0 1rem}
+    .section-head h2{font-size:2rem;color:var(--text-100);margin:0 0 .4rem}
+    .section-head p{color:var(--text-500);max-width:640px;margin:0 auto}
+
+    .grid{display:grid;gap:1.25rem}
+    @media (min-width: 760px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{padding:1.5rem;text-align:center}
+    .card:hover{transform:translateY(-6px)}
+    .card h3{margin:.6rem 0 .4rem;font-size:1.1rem;color:var(--text-100)}
+    .card p{color:var(--text-500)}
+    .icon{width:56px;height:56px;border-radius:14px;margin:0 auto .75rem;display:grid;place-items:center;background:rgba(124,77,255,.12);color:#fff}
+
+    /* Footer */
+    footer{margin-top:3rem;padding:2rem 0;border-top:1px solid rgba(46,43,58,.4);background:var(--bg-900)}
+    footer .row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;color:var(--text-500)}
+    footer nav{display:flex;gap:1rem}
+    footer a{color:var(--text-500)}
+    footer a:hover{color:var(--primary-600)}
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      .btn:hover,.card:hover{transform:none}
+    }
+
+    /* Timeline */
+    .timeline{position:relative;max-width:800px;margin:3rem auto}
+    .timeline::before{content:'';position:absolute;left:30px;top:0;bottom:0;width:2px;background:var(--primary);opacity:.3}
+    .timeline-item{position:relative;padding-left:70px;margin-bottom:2.5rem}
+    .timeline-year{position:absolute;left:0;top:0;width:60px;height:60px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:1rem}
+    .timeline-content{padding:1.25rem;border-radius:var(--radius);background:var(--glass);border:1px solid var(--glass-border)}
+    .timeline-content h4{margin:0 0 .5rem;color:var(--text-100)}
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
-  soon..
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Back to home">
+        <span class="logo glass">
+          <img alt="zensware logo" src="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png" loading="lazy" decoding="async">
+        </span>
+      </a>
+      <button class="menu-btn" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <nav id="primary-nav" class="links" role="navigation">
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="glow one"></div>
+      <div class="glow two"></div>
+      <div class="container">
+        <h1>About Us</h1>
+        <p class="hero-subtitle">We're a freshly started Valorant Cheat provider</p>
+        <p>We're a passionate team of developers and creators focused the user's safety when it comes to game cheating. </p>
+      </div>
+    </section>
+
+    <section id="about" class="container" aria-labelledby="about-title">
+      <div class="section-head">
+        <h2 id="about-title">Who We Are</h2>
+      </div>
+      <div class="glass" style="padding:2rem; margin-top:1rem;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center">
+          <div>
+            <h3 style="color:var(--text-100); margin-top:0">We are zensware</h3>
+            <p>We focus in creating external Valorant cheats with the maximum intent of providing our users security.</p>
+            <p>Every project we undertake is approached with attention to detail, ensuring great user functionality, efficiency, and elegance in every way possible.</p>
+          </div>
+          <div class="glass" style="padding:1.5rem; text-align:center">
+            <div style="font-size:3rem; font-weight:800; color:var(--primary); margin-bottom:.5rem">5+</div>
+            <div style="color:var(--text-100); font-weight:600">Years Experience</div>
+            <div style="color:var(--text-500); font-size:.9rem; margin-top:.25rem">Building since 2021</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="values" class="container" aria-labelledby="values-title" style="margin-top:3rem">
+      <div class="section-head">
+        <h2 id="values-title">Our Principles</h2>
+        <p>The principles that guide our work</p>
+      </div>
+      <div class="grid cols-3">
+        <article class="card glass">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>User Safety</h3>
+          <p>Our standards when providing you with our services is that we carefully ensure that the certain service wouldn't get you banned.</p>
+        </article>
+        <article class="card glass">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 3a9 9 0 110 18 9 9 0 010-18z" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>Product Quality</h3>
+          <p>Every decision when it comes to making users the service they want. Therefor we have in mind of setting user functionality first.</p>
+        </article>
+        <article class="card glass">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>Community Focused</h3>
+          <p>We build with and for our community, listening to feedback and resolving real-time issues for users.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container row">
+      <p>© <span id="year"></span> zensware.com</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const links = document.querySelector('.links');
+    menuBtn?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if(targetId === '#' || targetId === '/') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          e.preventDefault();
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if(links.classList.contains('open')) {
+            links.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
