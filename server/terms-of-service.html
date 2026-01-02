@@ -3,32 +3,232 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>soon..</title>
+  <title>Terms of Service - zensware</title>
+  <meta name="description" content="zensware Discord server rules and terms of service" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png">
+  <meta property="og:title" content="Terms of Service - zensware" />
+  <meta property="og:description" content="Discord server rules and terms of service" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png" />
+  <meta name="twitter:card" content="summary" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0b0b0f;
-      color: #fff;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
+    :root{
+      --primary:#7c4dff;--primary-600:#a974ff;--primary-700:#915eff;
+      --bg-950:#06060a;--bg-900:#0b0b0f;--bg-800:#1c1528;
+      --glass:rgba(22,19,31,.5);--glass-border:rgba(255,255,255,.08);
+      --text-100:#f4f2ff;--text-300:#e3dcff;--text-500:#c0b3e6;--ok:#4caf50;
+      --radius:18px;--shadow:0 10px 30px rgba(0,0,0,.35);--blur:12px;
+      --gap:1rem;--transition:transform .25s ease,opacity .25s ease,background-color .25s ease,color .25s ease,border-color .25s ease;
+      --header-h:64px;
     }
-    
-    @media (max-width: 768px) {
-      body {
-        font-size: 2rem;
-      }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;background:linear-gradient(135deg,var(--bg-950),var(--bg-800));color:var(--text-300);-webkit-font-smoothing:antialiased;moz-osx-font-smoothing:grayscale}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+    .glass{background:var(--glass);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid var(--glass-border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.5rem .75rem;border-radius:.5rem;background:#111;color:#fff;z-index:999}
+
+    /* Header - Minimal */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,11,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(46,43,58,.4)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;min-height:var(--header-h)}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;font-size:1.25rem;color:var(--text-100)}
+    .brand .logo{width:40px;height:40px;border-radius:10px;overflow:hidden;display:grid;place-items:center}
+    .brand img{width:100%;height:100%;object-fit:cover}
+    .links{display:flex;gap:1.25rem;align-items:center}
+    .links a{color:var(--text-500);font-weight:600;letter-spacing:.2px;position:relative}
+    .links a:focus-visible,.links a:hover{color:var(--primary-600)}
+    .links a.active{color:var(--primary-600)}
+
+    .menu-btn{display:none;appearance:none;border:1px solid var(--glass-border);background:transparent;color:var(--text-300);border-radius:12px;padding:.5rem .6rem;cursor:pointer}
+    .menu-btn svg{display:block}
+
+    /* Mobile menu */
+    @media (max-width: 820px){
+      .menu-btn{display:inline-flex}
+      .links{display:none}
+      .links.open{display:flex;position:absolute;left:1rem;right:1rem;top:64px;padding:1rem;background:rgba(11,11,15,.92);border:1px solid var(--glass-border);border-radius:14px;flex-direction:column}
+      .links a{padding:.5rem}
     }
+
+    /* Hero */
+    .hero{position:relative;min-height:calc(50svh - var(--header-h));text-align:center;overflow:clip;display:flex;align-items:center}
+    .hero .container{min-height:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 0}
+    .glow{position:absolute;inset:auto;pointer-events:none;z-index:-1;filter:blur(90px);opacity:.35}
+    .glow.one{width:260px;height:260px;background:radial-gradient(circle,var(--primary) 0%,transparent 70%);left:6%;top:8%}
+    .glow.two{width:280px;height:280px;background:radial-gradient(circle,var(--primary-600) 0%,transparent 70%);right:8%;bottom:12%}
+    .hero h1{font-size:min(9vw,3.25rem);line-height:1.15;margin:.25rem 0 .75rem;background:linear-gradient(90deg,var(--text-100),var(--primary-600));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+    .hero p{max-width:760px;margin:0 auto 1.25rem;color:var(--text-500);font-size:1.05rem}
+
+    /* Footer */
+    footer{margin-top:3rem;padding:2rem 0;border-top:1px solid rgba(46,43,58,.4);background:var(--bg-900)}
+    footer .row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;color:var(--text-500)}
+    footer nav{display:flex;gap:1rem}
+    footer a{color:var(--text-500)}
+    footer a:hover{color:var(--primary-600)}
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+    }
+
+    /* TOS Rules List */
+    .rules-list{margin:3rem auto;max-width:800px}
+    .rule-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;padding:1.5rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius)}
+    .rule-number{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+    .rule-content{flex:1}
+    .rule-content h3{margin:0 0 .5rem;color:var(--text-100);font-size:1.1rem}
+    .rule-content p{margin:0;color:var(--text-500);line-height:1.6}
+    .rule-severe{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3)}
+    .rule-severe .rule-number{background:#ef4444}
+    .notice-box{padding:1.5rem;background:rgba(124,77,255,0.1);border:1px solid rgba(124,77,255,0.3);border-radius:var(--radius);margin:2rem auto;max-width:800px;text-align:center}
+    .notice-box p{color:var(--text-300);margin:0}
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
-  soon..
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Back to home">
+        <span class="logo glass">
+          <img alt="zensware logo" src="https://raw.githubusercontent.com/zensware/Webhook-IOS-App/refs/heads/main/icons/icon-192.png" loading="lazy" decoding="async">
+        </span>
+      </a>
+      <button class="menu-btn" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <nav id="primary-nav" class="links" role="navigation">
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="glow one"></div>
+      <div class="glow two"></div>
+      <div class="container">
+        <h1>Terms of Service</h1>
+        <p>Community rules and prohibited content for the zensware Discord server</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="notice-box">
+        <p><strong>By participating in our Discord server, you agree to follow these rules.</strong> Violations may result in warnings, mutes, kicks, or permanent bans at staff discretion.</p>
+      </div>
+
+      <div class="rules-list">
+        <div class="rule-item">
+          <div class="rule-number">1</div>
+          <div class="rule-content">
+            <h3>No Harassment or Hate Speech</h3>
+            <p>Do not harass, bully, or discriminate against anyone based on race, ethnicity, gender, sexual orientation, religion, disability, or any other protected characteristic.</p>
+          </div>
+        </div>
+
+        <div class="rule-item rule-severe">
+          <div class="rule-number">2</div>
+          <div class="rule-content">
+            <h3>No Malicious Software</h3>
+            <p>Do not share, promote, or discuss malware, viruses, ransomware, or any software designed to harm computers or networks.</p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-number">3</div>
+          <div class="rule-content">
+            <h3>No Doxxing or Personal Information</h3>
+            <p>Never share someone's personal information without their explicit consent. This includes real names, addresses, phone numbers, emails, or any private details.</p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-number">4</div>
+          <div class="rule-content">
+            <h3>No Spam or Flooding</h3>
+            <p>Do not spam messages, emojis, images, or @mentions. Avoid excessive caps, copy-pasting, or disruptive behavior in text or voice channels.</p>
+          </div>
+        </div>
+
+        <div class="rule-item rule-severe">
+          <div class="rule-number">5</div>
+          <div class="rule-content">
+            <h3>No Cheating Discussion in Public Channels</h3>
+            <p>Do not publicly discuss specific cheating methods, bypass techniques, or ways to circumvent security measures. Keep such discussions to appropriate private channels if allowed.</p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-number">6</div>
+          <div class="rule-content">
+            <h3>No NSFW or Inappropriate Content</h3>
+            <p>Do not post sexually explicit, graphically violent, or otherwise inappropriate content. This includes profile pictures, usernames, and statuses.</p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-number">7</div>
+          <div class="rule-content">
+            <h3>No Advertising or Self-Promotion</h3>
+            <p>Do not advertise other servers, products, services, or social media without explicit permission from staff. This includes DM advertising to members.</p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-number">8</div>
+          <div class="rule-content">
+            <h3>No Impersonation</h3>
+            <p>Do not impersonate staff members, developers, or other community members. This includes using similar usernames, nicknames, or profile pictures to deceive others.</p>
+          </div>
+        </div>
+
+        <div class="rule-item rule-severe">
+          <div class="rule-number">9</div>
+          <div class="rule-content">
+            <h3>No Discussion of Illegal Activities</h3>
+            <p>Do not discuss, plan, or promote illegal activities including but not limited to hacking, fraud, theft, or distribution of illegal content.</p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-number">10</div>
+          <div class="rule-content">
+            <h3>No Evading Punishments</h3>
+            <p>Do not use alternate accounts to evade bans, mutes, or other punishments. This will result in all associated accounts being permanently banned.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <p>These rules are subject to change. Staff members have final say in rule interpretation and enforcement. When in doubt, ask a moderator.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container row">
+      <p>© <span id="year"></span> zensware.com</p>
+      <nav>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const links = document.querySelector('.links');
+    menuBtn?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
